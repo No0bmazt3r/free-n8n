@@ -4,6 +4,7 @@
 
 # Node
 node_modules/
+**/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -13,7 +14,10 @@ pnpm-debug.log*
 database.sqlite
 database.sqlite-shm
 database.sqlite-wal
-/home/node/.n8n
+binaryData/
+config/
+crash.journal
+*.sqlite
 
 # Docker
 docker-compose.override.yml
@@ -34,8 +38,9 @@ coverage/
 .vscode/
 .idea/
 
-# macOS
+# OS specific
 .DS_Store
+Thumbs.db
 
 # Python
 venv/
