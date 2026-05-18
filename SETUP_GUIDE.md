@@ -52,7 +52,7 @@ GENERIC_TIMEZONE=UTC  # Change to your timezone
 
 ### Step 3: Launch!
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 Wait for the startup message in the logs:
@@ -79,9 +79,9 @@ cp database.sqlite database.sqlite.backup
 ### Resetting Everything
 To start fresh:
 ```bash
-docker-compose down
+docker compose down
 rm database.sqlite*
-docker-compose up --build
+docker compose up --build
 ```
 
 ---
@@ -114,8 +114,8 @@ Your ngrok URL changes every time you restart! You will need to update your webh
 
 3. Rebuild and restart:
 ```bash
-docker-compose down
-docker-compose up --build
+docker compose down
+docker compose up --build
 ```
 
 The `entrypoint.sh` script will automatically run `npm install` inside the container when it detects new dependencies.
@@ -158,7 +158,7 @@ localhost-n8n/
 
 ### View Logs
 ```bash
-docker-compose logs -f n8n
+docker compose logs -f n8n
 ```
 
 ### Check ngrok Status
@@ -172,7 +172,7 @@ Visit: http://localhost:4040
 Check your auth token in `.env`. Ensure it matches exactly what is in your ngrok dashboard.
 
 ### "Database is locked"
-SQLite may lock if multiple processes try to access it. If this happens, run `docker-compose down` and then `docker-compose up`.
+SQLite may lock if multiple processes try to access it. If this happens, run `docker compose down` and then `docker compose up`.
 
 ---
 

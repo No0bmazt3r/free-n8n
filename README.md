@@ -25,7 +25,7 @@ Run **n8n** locally with **SQLite** and **ngrok** for easy webhook testing and a
 
 3. **Launch:**
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
 
 ## 📖 Documentation
