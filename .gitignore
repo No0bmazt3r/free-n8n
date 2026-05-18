@@ -16,6 +16,8 @@ database.sqlite-shm
 database.sqlite-wal
 binaryData/
 config/
+config
+config.node
 crash.journal
 *.sqlite
 
