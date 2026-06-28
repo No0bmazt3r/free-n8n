@@ -21,12 +21,13 @@ printf "Waiting for ngrok to be ready...\n"
 # wait up to 30s for ngrok to publish a tunnel
 for i in $(seq 1 30); do
   sleep 1
-  if curl -s "$NGROK_API" | grep -q "public_url"; then
+  PUB_URL=$(node /home/node/scripts/get-tunnel.js "$NGROK_API")
+  
+  if [ -n "$PUB_URL" ]; then
     break
   fi
 done
 
-PUB_URL=$(curl -s "$NGROK_API" | awk -F'"' '/public_url/ {print $4; exit}')
 if [ -z "$PUB_URL" ]; then
   printf "Warning: failed to fetch ngrok public_url; continuing without WEBHOOK_URL\n"
 else
