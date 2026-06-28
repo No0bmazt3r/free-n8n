@@ -7,7 +7,7 @@ services:
     environment:
       - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
     ports:
-      - "4040:4040" # ngrok web UI/API
+      - "4040:4040"
     restart: unless-stopped
 
   n8n:
@@ -17,11 +17,15 @@ services:
     ports:
       - "5678:5678"
     volumes:
-      - ./:/home/node/.n8n
+      - n8n_data:/home/node/.n8n
       - ./scripts:/home/node/scripts
     environment:
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - DB_TYPE=${DB_TYPE}
       - DB_SQLITE_DATABASE=${DB_SQLITE_DATABASE}
-    command: ["sh", "-c", "/home/node/scripts/entrypoint.sh"]
+      - N8N_PROXY_HOPS=1
+    entrypoint: ["sh", "/home/node/scripts/entrypoint.sh"]
     restart: unless-stopped
+
+volumes:
+  n8n_data:
